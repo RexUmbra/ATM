@@ -61,5 +61,17 @@ void ATM::changeCode(int pCode, int newCode)
 	m.unlock();
 }
 
+void ATM::transferMoney(ATM& user, int pCode, int amountMoney)
+{
+	m.lock();
+	if (pCode == code)
+	{
+		money -= amountMoney;
+		user.money += amountMoney;
+	}
+	m.unlock();
+}
+
+
 
 
