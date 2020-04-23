@@ -14,6 +14,6 @@ public:
 	void tookMoney(int pCode, int amountMoney);
 	void addMoney(int pCode, int amountMoney);
 	void changeCode(int pCode, int newCode);
-	void transferMoney(ATM &user, int pCode, int amountMoney);
+	
 };
 

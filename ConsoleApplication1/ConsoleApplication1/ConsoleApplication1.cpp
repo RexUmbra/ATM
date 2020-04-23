@@ -8,6 +8,11 @@ void f(ATM& user,int pCode,int money)
     user.tookMoney(pCode,money);
     user.getMoney(pCode);
 }
+void transferMoney(ATM& user1, ATM& user2, int code1, int code2, int money)
+{
+    user1.tookMoney(code1,money);
+    user2.addMoney(code2, money);
+}
 int main()
 {
     ATM user(1111);
@@ -27,7 +32,7 @@ int main()
     */
     user.getMoney(1111);
     user2.getMoney(2222);
-    user.transferMoney(user2,1111,1000);
+    
     user.getMoney(1111);
     user2.getMoney(2222);
     return 0;
