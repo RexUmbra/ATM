@@ -21,5 +21,9 @@ int main()
     t2.join();
     t3.join();
     t4.join();
+
+    user.changeCode(1111,0000);
+    user.getMoney(1111);
+    user.getMoney(0000);
     return 0;
 }

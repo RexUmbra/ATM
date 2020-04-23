@@ -8,7 +8,7 @@ ATM::ATM(int code) : code(code)
 
 void ATM::getMoney(int pCode)
 {
-	
+	m.lock();
 	if (pCode == code)
 	{
 		std::cout << money << '\n';
@@ -17,7 +17,7 @@ void ATM::getMoney(int pCode)
 	{
 		std::cout << "wrong code\n";
 	}
-	
+	m.unlock();
 }
 
 void ATM::tookMoney(int pCode, int amountMoney)
@@ -47,6 +47,16 @@ void ATM::addMoney(int pCode, int amountMoney)
 	if (code == pCode)
 	{
 		money += amountMoney;
+	}
+	m.unlock();
+}
+
+void ATM::changeCode(int pCode, int newCode)
+{
+	m.lock();
+	if (pCode == code)
+	{
+		code = newCode;
 	}
 	m.unlock();
 }

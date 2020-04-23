@@ -13,5 +13,7 @@ public:
 	void getMoney(int pCode);
 	void tookMoney(int pCode, int amountMoney);
 	void addMoney(int pCode, int amountMoney);
+	void changeCode(int pCode, int newCode);
+
 };
 
