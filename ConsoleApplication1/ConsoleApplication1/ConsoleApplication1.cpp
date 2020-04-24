@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "ATM.h"
 #include <thread>
+#include <string>
 using namespace std;
 void f(ATM& user,int pCode,int money)
 {
@@ -15,25 +16,71 @@ void transferMoney(ATM& user1, ATM& user2, int code1, int code2, int money)
 }
 int main()
 {
-    ATM user(1111);
-    ATM user2(2222);
-    /*
-    thread t1(f, ref(user), 1111,1000);
-    thread t2(f, ref(user), 1111,2000);
-    thread t3(f, ref(user), 1111,3000);
-    thread t4(f, ref(user), 1111,4000);
-    t1.join();
-    t2.join();
-    t3.join();
-    t4.join();
-    user.changeCode(1111,0000);
-    user.getMoney(1111);
-    user.getMoney(0000);
-    */
-    user.getMoney(1111);
-    user2.getMoney(2222);
+    int code, id;
+    cout << "Write code and ID\n";
+    cin >> code >> id;
+    ATM user(code);
+    while (true)
+    {
+        
+        cout << "Do you will make move?(yes/no)\n";
+        string str;
+        cin >> str;
+        system("cls");
+        if (str == "yes")
+        {
+            cout << "1-look at amount money.\n2-took money.\n3-add money.\n4-change password\n";
+            int f;
+            cin >> f;
+            system("cls");
+            if (f == 1)
+            {
+                int pass;
+                cout << "write password\n";
+                cin >> pass;
+                user.getMoney(pass);
+            }
+            else if(f ==2)
+            {
+                int pass,money;
+                cout << "write password\n";
+                cin >> pass;
+                system("cls");
+                cout << "write amount money\n";
+                cin >> money;
+                system("cls");
+                user.tookMoney(pass, money);
+            }
+            else if (f == 3)
+            {
+                int pass, money;
+                cout << "write password\n";
+                cin >> pass;
+                system("cls");
+                cout << "write amount money\n";
+                cin >> money;
+                system("cls");
+                user.addMoney(pass,money);
+            }
+            else if (f == 4)
+            {
+                int pass, npass; 
+                cout << "write password\n";
+                cin >> pass;
+                system("cls");
+                cout << "write new pass";
+                cin >> npass;
+                user.changeCode(pass, npass);
+            }
+
+        }
+        else
+        {
+            break;
+        }
+        
+        
+    }
     
-    user.getMoney(1111);
-    user2.getMoney(2222);
     return 0;
 }
